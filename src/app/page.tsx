@@ -229,10 +229,13 @@ export default function Page() {
           Jetzt Fördercheck starten
         </button>
 
-        {/* Ely – Sprechblase */}
-        <div className="absolute right-6 bottom-6 max-w-xs">
-          <div className="bg-white rounded-xl shadow-md p-3 text-sm border">{elyMessage}</div>
+        {/* Ely – Sprechblase (global, fixed) */}
+        <div className="fixed right-4 bottom-4 z-50 max-w-xs">
+          <div className="bg-white rounded-xl shadow-lg p-3 text-sm border">
+            {elyMessage}
+          </div>
         </div>
+
 
         {/* Mini-Fahrplan direkt auf der Startseite */}
         <div className="mt-10 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
@@ -347,6 +350,18 @@ export default function Page() {
           </>
         )}
       </section>
+      {/* Footer */}
+      <footer className="bg-green-700 text-white text-center py-6 mt-auto">
+        <p className="text-sm mb-2">
+          © {new Date().getFullYear()} SanierungsKompass – damit dein Zuhause zukunftssicher wird
+        </p>
+        <div className="flex justify-center gap-6 text-sm">
+          <a href="#" className="hover:underline">Impressum</a>
+          <a href="#" className="hover:underline">Datenschutz</a>
+          <a href="#foerdercheck" className="hover:underline">Fördercheck starten</a>
+        </div>
+      </footer>
+
     </div>
   );
 }
