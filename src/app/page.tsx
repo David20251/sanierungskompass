@@ -26,8 +26,8 @@ export default function Page() {
   const [expanded, setExpanded] = useState<number | null>(null);
   const [expandedDepends, setExpandedDepends] = useState<number | null>(null);
   const [showPlanFor, setShowPlanFor] = useState<number | null>(null);
-  const [elyMessage, setElyMessage] = useState(
-    'Hallo, ich bin Ely 🦔 – gib deine Hausdaten ein, ich finde passende Förderungen für dich.'
+  const [ellyMessage, setellyMessage] = useState(
+    'Hallo, ich bin Elly 🦔 – gib deine Hausdaten ein, ich finde passende Förderungen für dich.'
   );
 
   // -------- Regionale PLZ-Listen --------
@@ -204,7 +204,7 @@ export default function Page() {
     setExpanded(null);
     setExpandedDepends(null);
     setShowPlanFor(null);
-    setElyMessage(
+    setellyMessage(
       'Super! 🦔  Hier sind deine passenden Förderungen. Klicke auf „Mehr Infos“, „Wovon hängt das ab?“ oder lass dir direkt einen Förderplan erzeugen.'
     );
   };
@@ -229,10 +229,10 @@ export default function Page() {
           Jetzt Fördercheck starten
         </button>
 
-        {/* Ely – Sprechblase (global, fixed) */}
+        {/* Elly – Sprechblase (global, fixed) */}
         <div className="fixed right-4 bottom-4 z-50 max-w-xs">
           <div className="bg-white rounded-xl shadow-lg p-3 text-sm border">
-            {elyMessage}
+            {ellyMessage}
           </div>
         </div>
 
