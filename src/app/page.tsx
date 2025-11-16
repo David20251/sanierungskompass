@@ -40,6 +40,12 @@ export default function Page() {
   const PLZ_WOB = new Set(['38440','38442','38444','38446','38448']);
 
   const cleanPLZ = plz.trim();
+
+  const inHH =
+  cleanPLZ.startsWith('20') ||
+  cleanPLZ.startsWith('21') ||
+  cleanPLZ.startsWith('22');
+  
   const inWF = PLZ_WF.has(cleanPLZ);
   const inBS = PLZ_BS.has(cleanPLZ);
   const inWOB = PLZ_WOB.has(cleanPLZ);
@@ -154,6 +160,23 @@ export default function Page() {
           { label: 'Nachweise hochladen & Auszahlung', when: 'Woche 11–12' },
         ],
       },
+      // Hamburg
+      {
+        key: 'hh-spezial',
+        title: 'Stadt Hamburg – energetische Gebäudeförderung',
+        summe: 'programmabhängig, bis ca. 5.000–10.000 €',
+        details:
+          'Förderprogramme der Stadt Hamburg für energetische Modernisierung, z. B. Dämmung, Fenster, Heizungsumstellung oder erneuerbare Energien. Kombination mit Bundesförderung häufig möglich.',
+        depends:
+          'Konkretes Hamburg-Programm, Gebäudetyp, Effizienzstandard, Kombination mit BAFA/KfW, Antragszeitpunkt.',
+        plan: [
+          { label: 'Passendes Hamburg-Programm auswählen & Richtlinie lesen', when: 'Woche 1' },
+          { label: 'Angebote von Fachbetrieben einholen', when: 'Woche 1–2' },
+          { label: 'Antrag online/bei der Stelle einreichen', when: 'Woche 3' },
+          { label: 'Bewilligung abwarten', when: 'Woche 4–6' },
+          { label: 'Maßnahme umsetzen & Nachweise einreichen', when: 'Woche 7–12' },
+        ],
+      },
 
       // Wolfsburg
       {
@@ -180,11 +203,11 @@ export default function Page() {
         let visible = true;
 
         if (massnahme === 'heizung') {
-          visible = ['kfw-heizung', 'nds-regional', 'wf-spezial', 'bs-spezial', 'wob-spezial'].includes(f.key);
+          visible = ['kfw-heizung', 'nds-regional', 'wf-spezial', 'bs-spezial', 'wob-spezial', 'hh-spezial'].includes(f.key);
         } else if (massnahme === 'fenster' || massnahme === 'daemmung') {
-          visible = ['bafa-gebaeudehuelle', 'nds-regional', 'wf-spezial', 'bs-spezial', 'wob-spezial'].includes(f.key);
+          visible = ['bafa-gebaeudehuelle', 'nds-regional', 'wf-spezial', 'bs-spezial', 'wob-spezial', 'hh-spezial'].includes(f.key);
         } else if (massnahme === 'pv') {
-          visible = ['nds-regional', 'wf-spezial', 'bs-spezial', 'wob-spezial'].includes(f.key);
+          visible = ['nds-regional', 'wf-spezial', 'bs-spezial', 'wob-spezial', 'hh-'].includes(f.key);
         }
 
         // Kommunale Programme nur bei passender PLZ
