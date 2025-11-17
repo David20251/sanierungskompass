@@ -50,6 +50,10 @@ export default function Page() {
   const inBS = PLZ_BS.has(cleanPLZ);
   const inWOB = PLZ_WOB.has(cleanPLZ);
 
+   // Niedersachsen grob über PLZ-Start (vereinfachte Logik)
+  const ndsPrefixes = ['26', '27', '29', '30', '31', '37', '38', '49'];
+  const inNDS = ndsPrefixes.some((p) => cleanPLZ.startsWith(p));
+
   // Heizungstyp normalisieren
   const heatType = useMemo(() => {
     const h = heizung.toLowerCase();
@@ -214,6 +218,8 @@ export default function Page() {
         if (f.key === 'wf-spezial' && !inWF) visible = false;
         if (f.key === 'bs-spezial' && !inBS) visible = false;
         if (f.key === 'wob-spezial' && !inWOB) visible = false;
+        if (f.key === 'nds-regional' && !inNDS) visible = false;
+
 
         return { ...f, visible };
       })
